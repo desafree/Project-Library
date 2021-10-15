@@ -1,0 +1,58 @@
+html, body, .desktop {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktop {
+    margin: 30px;
+    background-color: salmon;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+
+.containerBooks {
+    display: flex;
+    margin: 30px;
+    background-color: seagreen;
+    gap: 30px;
+    flex: 1 1 100%;
+    
+}
+
+.containerBook {
+    background-color: seashell;
+    height: 300px;
+    text-align: center
+}
+
+.newBook {
+    margin: 20px;
+}
+
+.formcontainer {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form {
+    position: absolute;
+    margin: 30px auto;
+    width: 300px;
+    height: 500px;
+    background-color: yellow;  
+    z-index: 9;
+}
