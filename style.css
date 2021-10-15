@@ -56,3 +56,7 @@ html, body, .desktop {
     background-color: yellow;  
     z-index: 9;
 }
+
+.removeBook {
+    background-color: yellow;
+}
