@@ -16,7 +16,7 @@ newBook.addEventListener('click', () => {
     desktop.appendChild(form);
     
     const formhtml = document.createElement('form');
-    formhtml.classList.add('.formhtml');
+    formhtml.classList.add('formhtml');
     
     const divTitle = document.createElement('div');
     const inputTitle = document.createElement('input');
@@ -24,7 +24,7 @@ newBook.addEventListener('click', () => {
     inputTitle.setAttribute('id','title');
     const titleLabel = document.createElement('label');
     titleLabel.setAttribute('for', 'title');
-    titleLabel.textContent='Title'
+    titleLabel.textContent='Title: '
     divTitle.appendChild(titleLabel);
     divTitle.appendChild(inputTitle);
     formhtml.appendChild(divTitle);
@@ -35,7 +35,7 @@ newBook.addEventListener('click', () => {
     inputAuthor.setAttribute('id','author');
     const authorLabel = document.createElement('label');
     authorLabel.setAttribute('for', 'author');
-    authorLabel.textContent='Author';
+    authorLabel.textContent='Author: ';
     divAuthor.appendChild(authorLabel);
     divAuthor.appendChild(inputAuthor);
     formhtml.appendChild(divAuthor);
@@ -46,12 +46,13 @@ newBook.addEventListener('click', () => {
     inputPages.setAttribute('id','pages');
     const pagesLabel = document.createElement('label');
     pagesLabel.setAttribute('for', 'author');
-    pagesLabel.textContent='Pages';
+    pagesLabel.textContent='Pages: ';
     divPages.appendChild(pagesLabel);
     divPages.appendChild(inputPages);
     formhtml.appendChild(divPages);
 
     const divRead = document.createElement('div');
+    divRead.classList.add('divRead')
     const inputRead = document.createElement('input');
     inputRead.setAttribute('type','checkbox');
     inputRead.setAttribute('id','read');
@@ -63,6 +64,7 @@ newBook.addEventListener('click', () => {
     formhtml.appendChild(divRead);
 
     const divSubmit = document.createElement('div');
+    divSubmit.classList.add('submitDiv')
     const submitButton = document.createElement('button');
     submitButton.setAttribute('class', 'submitbutton');
     submitButton.textContent = 'Add new book'
@@ -144,27 +146,32 @@ function displayLast(lista) {
         
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('titleContainer');
-        titleContainer.textContent=lista[(lista.length-1)].title;
+        titleContainer.textContent=`Title: ${lista[(lista.length-1)].title}`;
         containerBook.appendChild(titleContainer);
         
         const authorContainer = document.createElement('div');
         authorContainer.classList.add('authorContainer');
-        authorContainer.textContent=lista[(lista.length-1)].author;
+        authorContainer.textContent=`Author: ${lista[(lista.length-1)].author}`;
         containerBook.appendChild(authorContainer);
 
         const pagesContainer = document.createElement('div');
         pagesContainer.classList.add('pagesContainer');
-        pagesContainer.textContent=lista[(lista.length-1)].pages;
+        pagesContainer.textContent=`Pages: ${lista[(lista.length-1)].pages}`;
         containerBook.appendChild(pagesContainer);
 
         const readContainer = document.createElement('div');
         readContainer.classList.add('readContainer');
-        readContainer.textContent=lista[(lista.length-1)].read;
+        if(lista[(lista.length-1)].read) {
+            readContainer.textContent = 'Already read'
+        }
+        else{
+            readContainer.textContent = 'Not read'
+        }
         containerBook.appendChild(readContainer);
 
         const removeBook = document.createElement('button');
         removeBook.classList.add('removeBook');
-        removeBook.textContent='✕';
+        removeBook.textContent='Remove book';
         containerBook.appendChild(removeBook);
 
         removeBook.addEventListener('click', ()=> {
@@ -178,7 +185,7 @@ function displayLast(lista) {
         containerBook.appendChild(readStatus);
 
         readStatus.addEventListener('click', ()=> {
-            readContainer.textContent=true;
+            readContainer.textContent='Already read';
         })
         
 
@@ -201,27 +208,32 @@ function display(lista) {
         
         const titleContainer = document.createElement('div');
         titleContainer.classList.add('titleContainer');
-        titleContainer.textContent=lista[i].title;
+        titleContainer.textContent=`Title:\n ${lista[i].title}`;
         containerBook.appendChild(titleContainer);
         
         const authorContainer = document.createElement('div');
         authorContainer.classList.add('authorContainer');
-        authorContainer.textContent=lista[i].author;
+        authorContainer.textContent=`Author: ${lista[i].author}`;
         containerBook.appendChild(authorContainer);
 
         const pagesContainer = document.createElement('div');
         pagesContainer.classList.add('pagesContainer');
-        pagesContainer.textContent=lista[i].pages;
+        pagesContainer.textContent=`Pages: ${lista[i].pages}`;
         containerBook.appendChild(pagesContainer);
 
         const readContainer = document.createElement('div');
         readContainer.classList.add('readContainer');
-        readContainer.textContent=lista[i].read;
+        if(lista[i].read==true) {
+            readContainer.textContent= 'Already read';
+        }
+        else{
+            readContainer.textContent= 'Not Read';
+        }
         containerBook.appendChild(readContainer);
 
         const removeBook = document.createElement('button');
         removeBook.classList.add('removeBook');
-        removeBook.textContent='✕';
+        removeBook.textContent='Remove book';
         containerBook.appendChild(removeBook);
 
         removeBook.addEventListener('click', ()=> {
@@ -235,7 +247,7 @@ function display(lista) {
         containerBook.appendChild(readStatus);
 
         readStatus.addEventListener('click', ()=> {
-            readContainer.textContent=true;
+            readContainer.textContent='Already read';
         })
 
         containerBooks.appendChild(containerBook);
